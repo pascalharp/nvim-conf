@@ -31,7 +31,13 @@ return require('packer').startup({
     use "nvim-treesitter/nvim-treesitter"
 
     -- Colorscheme
-    use "ellisonleao/gruvbox.nvim"
+    use {
+      "ellisonleao/gruvbox.nvim",
+      config = function()
+        vim.o.background = "dark"
+        vim.cmd([[colorscheme gruvbox]])
+      end
+    }
 
     -- File explorer
     use {
@@ -106,6 +112,9 @@ return require('packer').startup({
         })
       end
     }
+
+    -- Nice start screen
+    use 'mhinz/vim-startify'
 
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap
     if PACKER_BOOTSTRAP then

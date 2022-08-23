@@ -29,6 +29,7 @@ wk.register({
     i = "Implementation",
     k = "Signature Help",
     w = {
+      name = "Workspace features",
       a = "Add Workspace",
       r = "Remove Workspace",
       l = "List Workspace",
