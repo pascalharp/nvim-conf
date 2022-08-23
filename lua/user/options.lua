@@ -18,7 +18,7 @@ local options = {
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
-  -- termguicolors = true,                    -- set term gui colors (most terminals support this)
+  termguicolors = true,                    -- set term gui colors (most terminals support this)
   timeoutlen = 500,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
@@ -35,9 +35,14 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  list = true,                             -- Show listchars
 }
 
 vim.opt.shortmess:append "c"
+vim.opt.listchars:append({trail = "·"})
+vim.opt.listchars:append({space = "·"})
+vim.opt.listchars:append({tab = ">-"})
+vim.opt.listchars:append({eol = "↴"})
 
 for k, v in pairs(options) do
   vim.opt[k] = v

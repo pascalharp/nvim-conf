@@ -42,10 +42,8 @@ map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Diagnostics
-map('n', '<leader>e', vim.diagnostic.open_float, opts)
 map('n', '[', vim.diagnostic.goto_prev, opts)
 map('n', ']', vim.diagnostic.goto_next, opts)
-map('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
 -- Toggle explorer
 local ok, nvim_tree = pcall(require, "nvim-tree")
@@ -65,7 +63,22 @@ if ok then
   map("n", "<leader>h", telescope.help_tags, opts)
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
-  map("n", "<leader>gf", telescope.git_files, opts)
+  map("n", "<leader>vf", telescope.git_files, opts)
 else
   print("Could not find telescope when setting up keybinds")
+end
+
+-- ToggleTerm bindings
+local ok, toggleterm = pcall(require, "toggleterm")
+if ok then
+  local topts = {}
+  map("t", "<Esc>", "<C-\\><C-n>", opts)
+  map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  map("n", "<leader>t", function() toggleterm.toggle(1, 1, ".", "float") end, opts)
+  map("n", "<leader>T", function() toggleterm.toggle(1, 10, ".", "horizontal") end, opts)
+else
+  print("Could not find toggleterm when setting up keybinds")
 end
