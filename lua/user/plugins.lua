@@ -86,6 +86,9 @@ return require('packer').startup({
       config = function() require('user.lsp') end
     }
 
+    -- rust lsp extras
+    use 'simrat39/rust-tools.nvim'
+
     -- auto complete (depends on nvim-lsp)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'

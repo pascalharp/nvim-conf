@@ -20,6 +20,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
@@ -56,10 +57,23 @@ lspconf['pyright'].setup{
   capabilities = capabilities
 }
 
-lspconf['rust_analyzer'].setup{
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+local ok_rust_tools, rust_tools = pcall(require, "rust_tools")
+if ok_rust_tools then
+  rust_tools.setup({
+    server = {
+      on_attach = function(_, bufnr)
+        vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+        vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+      end,
+      capabilities = capabilities,
+    },
+  })
+else
+  lspconf['rust_analyzer'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+end
 
 lspconf['sumneko_lua'].setup{
   on_attach = on_attach,

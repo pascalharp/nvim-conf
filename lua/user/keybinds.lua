@@ -42,8 +42,8 @@ map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Diagnostics
-map('n', '[', vim.diagnostic.goto_prev, opts)
-map('n', ']', vim.diagnostic.goto_next, opts)
+map('n', '[<space>', vim.diagnostic.goto_prev, opts)
+map('n', ']<space>', vim.diagnostic.goto_next, opts)
 
 -- Toggle explorer
 local ok_nt, nvim_tree = pcall(require, "nvim-tree")
