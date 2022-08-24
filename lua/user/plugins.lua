@@ -62,8 +62,17 @@ return require('packer').startup({
     use {
       'nvim-telescope/telescope.nvim',
       tag = '0.1.0',
-      config = function() require('telescope').setup() end
+      config = function()
+        require('telescope').setup({
+          extensions = {
+            ['ui-select'] = require("telescope.themes").get_dropdown({})
+          }
+        })
+        require("telescope").load_extension("ui-select")
+      end
     }
+
+    use {'nvim-telescope/telescope-ui-select.nvim' }
 
     -- Better status line
     use {

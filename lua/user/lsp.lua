@@ -43,16 +43,27 @@ end
 
 local lspconf = require('lspconfig')
 
+local capabilities = {}
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+  vim.notify("Unable to get capabilities from cmp_nvim_lsp")
+else
+  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
+
 lspconf['pyright'].setup{
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 lspconf['rust_analyzer'].setup{
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 lspconf['sumneko_lua'].setup{
   on_attach = on_attach,
+  capabilities, capabilities,
   settings = {
     Lua = {
       runtime = {
