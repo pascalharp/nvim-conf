@@ -34,6 +34,12 @@ return require('packer').startup({
     use {
       "ellisonleao/gruvbox.nvim",
       config = function()
+        require("gruvbox").setup({
+          overrides = {
+            FloatBorder = { bg = "#282828", fg = "#D78101" },
+            NormalFloat = { bg = "#282828" }
+          }
+        })
         vim.o.background = "dark"
         vim.cmd([[colorscheme gruvbox]])
       end
@@ -113,8 +119,10 @@ return require('packer').startup({
       end
     }
 
-    -- Nice start screen
-    use 'mhinz/vim-startify'
+    use {
+      'glepnir/dashboard-nvim',
+      config = function() require("user.dashboard") end
+    }
 
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap
     if PACKER_BOOTSTRAP then

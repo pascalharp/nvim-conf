@@ -46,8 +46,8 @@ map('n', '[', vim.diagnostic.goto_prev, opts)
 map('n', ']', vim.diagnostic.goto_next, opts)
 
 -- Toggle explorer
-local ok, nvim_tree = pcall(require, "nvim-tree")
-if ok then
+local ok_nt, nvim_tree = pcall(require, "nvim-tree")
+if ok_nt then
   map("n", "F", function() nvim_tree.toggle(false, true) end, opts)
   map("n", "<leader>e", function() nvim_tree.toggle(false, true) end, opts)
 else
@@ -55,8 +55,8 @@ else
 end
 
 -- Telescope bindings
-local ok, telescope = pcall(require, "telescope.builtin")
-if ok then
+local ok_tel, telescope = pcall(require, "telescope.builtin")
+if ok_tel then
   map("n", "<leader>f", telescope.find_files, opts)
   map("n", "<leader>g", telescope.live_grep, opts)
   map("n", "<leader>b", telescope.buffers, opts)
@@ -69,9 +69,8 @@ else
 end
 
 -- ToggleTerm bindings
-local ok, toggleterm = pcall(require, "toggleterm")
-if ok then
-  local topts = {}
+local ok_tt, toggleterm = pcall(require, "toggleterm")
+if ok_tt then
   map("t", "<Esc>", "<C-\\><C-n>", opts)
   map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
   map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
