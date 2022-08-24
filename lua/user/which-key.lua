@@ -16,7 +16,7 @@ wk.register({
   b = { "Buffers" },
   h = { "Help Tags" },
   d = { "Go to Definition" },
-  D = { "Type Definition"},
+  D = { "Type Definition" },
   r = { "Show References" },
   v = {
     name = "Versioning",
@@ -28,6 +28,7 @@ wk.register({
     d = "Definition",
     i = "Implementation",
     k = "Signature Help",
+    f = "Format file",
     w = {
       name = "Workspace features",
       a = "Add Workspace",
@@ -38,6 +39,6 @@ wk.register({
     a = "Code Action",
   }
 },
-{
-  prefix = "<leader>"
-})
+  {
+    prefix = "<leader>"
+  })
