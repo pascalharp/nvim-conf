@@ -59,19 +59,33 @@ lspconf['pyright'].setup{
   capabilities = capabilities
 }
 
-local ok_rust_tools, rust_tools = pcall(require, "rust_tools")
+local ok_rust_tools, rust_tools = pcall(require, "rust-tools")
 if ok_rust_tools then
   rust_tools.setup({
     server = {
-      on_attach = function(_, bufnr)
-        vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-        vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
-      end,
+      on_attach = on_attach,
       capabilities = capabilities,
     },
   })
 else
+  print("Could not load rust tools. Falling back to plain rust_analyzer")
   lspconf['rust_analyzer'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+end
+
+local ok_clangd_extras, clangd_extras = pcall(require, "clangd_extensions")
+if ok_clangd_extras then
+  clangd_extras.setup({
+    server = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    },
+  })
+else
+  print("Could not load clangd extras. Falling back to plain clangd")
+  lspconf['clangd'].setup{
     on_attach = on_attach,
     capabilities = capabilities
   }

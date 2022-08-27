@@ -97,11 +97,15 @@ return require('packer').startup({
     -- lsp
     use {
       'neovim/nvim-lspconfig',
+      after = "nvim-cmp",
       config = function() require('user.lsp') end
     }
 
     -- rust lsp extras
     use 'simrat39/rust-tools.nvim'
+
+    -- clangd extras
+    use  'p00f/clangd_extensions.nvim'
 
     -- auto complete (depends on nvim-lsp)
     use 'hrsh7th/cmp-nvim-lsp'
