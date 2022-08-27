@@ -21,6 +21,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting)
+  vim.keymap.set('n', '<leader>lci', vim.lsp.buf.incoming_calls)
+  vim.keymap.set('n', '<leader>lco', vim.lsp.buf.outgoing_calls)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 

@@ -12,6 +12,7 @@ db.preview_file_height = 19
 db.preview_file_width = 40
 
 db.custom_center = {
-  { icon = '📂', desc = 'Find file', action = 'Telescope find_files' },
-  { icon = '🔎', desc = 'Live Grep', action = 'Telescope live_grep' },
+  { icon = '🖋  ', desc = 'New File', action = 'DashboardNewFile' },
+  { icon = '📂 ', desc = 'Find file', action = 'Telescope find_files' },
+  { icon = '🔎 ', desc = 'Live Grep', action = 'Telescope live_grep' },
 }

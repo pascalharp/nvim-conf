@@ -10,7 +10,7 @@ wk.setup({
 })
 
 wk.register({
-  e = { "Toggle File Explorer" },
+  e = { "Emojis" },
   f = { "Find File" },
   g = { "Live Grep" },
   b = { "Buffers" },
@@ -29,6 +29,11 @@ wk.register({
     i = "Implementation",
     k = "Signature Help",
     f = "Format file",
+    c = {
+      name = "Calls",
+      i = "Incoming calls",
+      o = "Outgoing calls",
+    },
     w = {
       name = "Workspace features",
       a = "Add Workspace",

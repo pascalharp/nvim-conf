@@ -2,9 +2,10 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -48,8 +49,12 @@ return require('packer').startup({
     -- File explorer
     use {
       'kyazdani42/nvim-tree.lua',
-      config = function() require('nvim-tree').setup() end
+      config = function()
+        require('nvim-tree').setup({ remove_keymaps = {'F'} })
+      end
     }
+
+    use 'preservim/tagbar'
 
     -- Nice view of buffers on the top
     use {
@@ -65,14 +70,23 @@ return require('packer').startup({
       config = function()
         require('telescope').setup({
           extensions = {
-            ['ui-select'] = require("telescope.themes").get_dropdown({})
+            ['ui-select'] = require("telescope.themes").get_dropdown({}),
+            emoji = {
+              action = function(emoji)
+                vim.api.nvim_put({ emoji.value }, 'c', false, true)
+              end
+            }
           }
         })
         require("telescope").load_extension("ui-select")
+        require("telescope").load_extension("emoji")
       end
     }
 
-    use {'nvim-telescope/telescope-ui-select.nvim' }
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
+
+    use { 'xiyaowong/telescope-emoji.nvim' }
+
 
     -- Better status line
     use {
@@ -107,7 +121,7 @@ return require('packer').startup({
     -- Tool to display key shortcuts
     use {
       "folke/which-key.nvim",
-       config = function() require("user.which-key") end
+      config = function() require("user.which-key") end
     }
 
     -- Show git nicely
@@ -124,8 +138,8 @@ return require('packer').startup({
         require("toggleterm").setup({
           float_opts = {
             border = 'curved',
-            width = function() return vim.o.columns * 0.9 end,
-            height = function() return vim.o.lines * 0.8 end,
+            width = function() return math.floor(vim.o.columns * 0.9) end,
+            height = function() return math.floor(vim.o.lines * 0.8) end,
           }
         })
       end
@@ -135,6 +149,8 @@ return require('packer').startup({
       'glepnir/dashboard-nvim',
       config = function() require("user.dashboard") end
     }
+
+    use 'elkowar/yuck.vim'
 
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap
     if PACKER_BOOTSTRAP then

@@ -49,10 +49,12 @@ map('n', ']<space>', vim.diagnostic.goto_next, opts)
 local ok_nt, nvim_tree = pcall(require, "nvim-tree")
 if ok_nt then
   map("n", "F", function() nvim_tree.toggle(false, true) end, opts)
-  map("n", "<leader>e", function() nvim_tree.toggle(false, true) end, opts)
 else
   print("Could not find nvim_tree when setting up keybinds")
 end
+
+-- Toggle Tagbar
+map("n", "T", "<cmd>TagbarToggle<cr>", opts)
 
 -- Telescope bindings
 local ok_tel, telescope = pcall(require, "telescope.builtin")
@@ -64,6 +66,7 @@ if ok_tel then
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
   map("n", "<leader>vf", telescope.git_files, opts)
+  map("n", "<leader>e", "<cmd>Telescope emoji<cr>", opts)
 else
   print("Could not find telescope when setting up keybinds")
 end
@@ -76,7 +79,7 @@ if ok_tt then
   map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
   map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
   map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-  map("n", "<leader>t", function() toggleterm.toggle(1, 1, ".", "float") end, opts)
+  map("n", "<leader>t", function() toggleterm.toggle(1, 20, ".", "float") end, opts)
   map("n", "<leader>T", function() toggleterm.toggle(1, 10, ".", "horizontal") end, opts)
 else
   print("Could not find toggleterm when setting up keybinds")
