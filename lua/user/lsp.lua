@@ -51,7 +51,7 @@ local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
   vim.notify("Unable to get capabilities from cmp_nvim_lsp")
 else
-  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
 lspconf['pyright'].setup{
