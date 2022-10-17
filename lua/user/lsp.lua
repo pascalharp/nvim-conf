@@ -115,3 +115,8 @@ lspconf['sumneko_lua'].setup{
     },
   },
 }
+
+lspconf['texlab'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}

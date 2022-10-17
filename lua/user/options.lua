@@ -35,7 +35,11 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
-  list = true,                             -- Show listchars
+  list = true,                             -- show listchars
+  spell = true,                            -- turn spell checking on
+  spellsuggest = { 'fast', 5 },            -- faster suggest and limit
+  spelllang = { 'en_us', 'de_de' },        -- set spelllang to en and de
+  visualbell = true,                       -- No beeps
 }
 
 vim.opt.shortmess:append "c"

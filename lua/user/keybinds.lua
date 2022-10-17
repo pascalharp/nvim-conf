@@ -11,7 +11,7 @@ vim.g.maplocalleader = " "
 -- General (Normal Mode)
 
 -- Better window navigation
-map("n", "<C-c>", ":q<cr>", opts)
+map("n", "<C-c>", "<cmd>bd<cr>", opts)
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
