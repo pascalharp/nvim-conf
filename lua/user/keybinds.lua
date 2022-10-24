@@ -45,6 +45,14 @@ map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 map('n', '[<space>', vim.diagnostic.goto_prev, opts)
 map('n', ']<space>', vim.diagnostic.goto_next, opts)
 
+-- Toggle indent mode
+local ok_uti, _ = pcall(require, "user.utils")
+if ok_uti then
+    map("n", "<A-t>", next_indent_mode)
+else
+    print("Could not find utils")
+end
+
 -- Toggle explorer
 local ok_nt, nvim_tree = pcall(require, "nvim-tree")
 if ok_nt then

@@ -120,3 +120,14 @@ lspconf['texlab'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+
+lspconf['ltex'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetype = { "bib", "gitcommit", "markdown", "plaintex", "tex", "latex" },
+    settings = {
+        ltex = {
+            enabled = { "latex", "markdown", "tex" },
+        }
+    }
+}
