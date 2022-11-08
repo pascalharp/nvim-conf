@@ -17,6 +17,7 @@ wk.register({
   f = { "Find File" },
   g = { "Live Grep" },
   h = { "Help Tags" },
+  i = { "Indent Mode Picker" },
   j = { "Jump List" },
   m = { "Toggle Minimap" },
   M = { "Enter/Leave Minima" },

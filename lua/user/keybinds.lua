@@ -44,8 +44,9 @@ map('n', ']<space>', vim.diagnostic.goto_next, opts)
 -- Toggle indent mode
 local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
-    map("n", "<A-t>", utils.next_indent_mode)
-    map("n", "<A-s>", utils.toggle_spell_check)
+    map("n", "<A-t>", utils.next_indent_mode, opts)
+    map("n", "<A-s>", utils.toggle_spell_check, opts)
+    map("n", "<leader>i", utils.pick_indent_mode, opts)
 else
     print("Could not find utils")
 end
