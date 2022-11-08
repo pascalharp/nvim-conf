@@ -15,12 +15,16 @@ wk.register({
   g = { "Live Grep" },
   b = { "Buffers" },
   h = { "Help Tags" },
+  j = { "Jump List" },
   d = { "Go to Definition" },
   D = { "Type Definition" },
   r = { "Show References" },
   v = {
     name = "Versioning",
+    c = { "Git Commits" },
     f = { "Git Files" },
+    b = { "Git Branches" },
+    s = { "Git Stash" },
   },
   l = {
     name = "LSP (when attached)",

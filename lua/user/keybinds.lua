@@ -8,8 +8,6 @@ map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- General (Normal Mode)
-
 -- Better window navigation
 map("n", "<C-c>", "<cmd>bd<cr>", opts)
 map("n", "<C-h>", "<C-w>h", opts)
@@ -27,28 +25,27 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 map("n", "<A-l>", ":bnext<CR>", opts)
 map("n", "<A-h>", ":bprevious<CR>", opts)
 
--- General (Visual Mode)
+-- Move line up and down normal mode
+map("n", "<A-j>", ":m .+1<CR>==", opts)
+map("n", "<A-k>", ":m .-2<CR>==", opts)
 
--- Move text up and down
-map("v", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-map("v", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+-- Move line up and down insert mode
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
--- General (Visual Block Mode)
-
--- Move text up and down
-map("x", "J", ":move '>+1<CR>gv-gv", opts)
-map("x", "K", ":move '<-2<CR>gv-gv", opts)
-map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+-- Move line up and down in visual and block mode
+map("x", "<A-j>", ":move '>+1<CR>gv=gv", opts)
+map("x", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Diagnostics
 map('n', '[<space>', vim.diagnostic.goto_prev, opts)
 map('n', ']<space>', vim.diagnostic.goto_next, opts)
 
 -- Toggle indent mode
-local ok_uti, _ = pcall(require, "user.utils")
+local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
-    map("n", "<A-t>", next_indent_mode)
+    map("n", "<A-t>", utils.next_indent_mode)
+    map("n", "<A-s>", utils.toggle_spell_check)
 else
     print("Could not find utils")
 end
@@ -73,8 +70,11 @@ if ok_tel then
   map("n", "<leader>h", telescope.help_tags, opts)
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
-  map("n", "<leader>vf", telescope.git_files, opts)
   map("n", "<leader>j", telescope.jumplist, opts)
+  map("n", "<leader>vf", telescope.git_files, opts)
+  map("n", "<leader>vc", telescope.git_commits, opts)
+  map("n", "<leader>vb", telescope.git_branches, opts)
+  map("n", "<leader>vs", telescope.git_stash, opts)
   map("n", "<leader>e", "<cmd>Telescope emoji<cr>", opts)
 else
   print("Could not find telescope when setting up keybinds")
