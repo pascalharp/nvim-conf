@@ -1,3 +1,6 @@
+local M = {}
+
+-- Toggle indent modes
 local current_indent_mode = "Four Spaces"
 local indent_modes = {
     ["Two Spaces"] = {
@@ -48,7 +51,7 @@ local function indent_mode_set_confs_curr()
     print("Indent Mode set to: " .. current_indent_mode)
 end
 
-function set_indent_mode(mode)
+function M.set_indent_mode(mode)
     if not indent_modes[mode] then
         print("Invalid indent mode " .. mode)
     else
@@ -57,8 +60,14 @@ function set_indent_mode(mode)
     end
 end
 
-function next_indent_mode()
+function M.next_indent_mode()
     current_indent_mode = indent_mode_next[current_indent_mode]
     indent_mode_set_confs_curr()
 end
 
+-- Toggle spell check
+function M.toggle_spell_check()
+    vim.opt.spell = not(vim.opt.spell:get())
+end
+
+return M

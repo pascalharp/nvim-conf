@@ -48,9 +48,9 @@ for k, v in pairs(options) do
 end
 
 -- Set initial indent mode
-local ok_ut, _ = pcall(require, "user.utils")
+local ok_ut, utils = pcall(require, "user.utils")
 if ok_ut then
-    set_indent_mode("Four Spaces")
+    utils.set_indent_mode("Four Spaces")
 else
     print("Could not find utils")
 end

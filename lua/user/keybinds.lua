@@ -46,9 +46,10 @@ map('n', '[<space>', vim.diagnostic.goto_prev, opts)
 map('n', ']<space>', vim.diagnostic.goto_next, opts)
 
 -- Toggle indent mode
-local ok_uti, _ = pcall(require, "user.utils")
+local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
-    map("n", "<A-t>", next_indent_mode)
+    map("n", "<A-t>", utils.next_indent_mode)
+    map("n", "<A-s>", utils.toggle_spell_check)
 else
     print("Could not find utils")
 end
@@ -74,6 +75,9 @@ if ok_tel then
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
   map("n", "<leader>vf", telescope.git_files, opts)
+  map("n", "<leader>vc", telescope.git_commits, opts)
+  map("n", "<leader>vb", telescope.git_branches, opts)
+  map("n", "<leader>vs", telescope.git_stash, opts)
   map("n", "<leader>e", "<cmd>Telescope emoji<cr>", opts)
 else
   print("Could not find telescope when setting up keybinds")

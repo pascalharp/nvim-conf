@@ -20,7 +20,10 @@ wk.register({
   r = { "Show References" },
   v = {
     name = "Versioning",
+    c = { "Git Commits" },
     f = { "Git Files" },
+    b = { "Git Branches" },
+    s = { "Git Stash" },
   },
   l = {
     name = "LSP (when attached)",
