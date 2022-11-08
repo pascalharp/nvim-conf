@@ -95,7 +95,7 @@ else
   print("Could not find toggleterm when setting up keybinds")
 end
 
--- Minimpa bindings
+-- Minimap bindings
 local ok_mm, mm = pcall(require, "codewindow")
 if ok_mm then
   map("n",
