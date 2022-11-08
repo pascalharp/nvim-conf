@@ -24,7 +24,8 @@ wk.register({
     c = { "Git Commits" },
     f = { "Git Files" },
     b = { "Git Branches" },
-    s = { "Git Stash" },
+    s = { "Git Status" },
+    S = { "Git Stash" },
   },
   l = {
     name = "LSP (when attached)",

@@ -74,7 +74,8 @@ if ok_tel then
   map("n", "<leader>vf", telescope.git_files, opts)
   map("n", "<leader>vc", telescope.git_commits, opts)
   map("n", "<leader>vb", telescope.git_branches, opts)
-  map("n", "<leader>vs", telescope.git_stash, opts)
+  map("n", "<leader>vs", telescope.git_status, opts)
+  map("n", "<leader>vS", telescope.git_stash, opts)
   map("n", "<leader>e", "<cmd>Telescope emoji<cr>", opts)
 else
   print("Could not find telescope when setting up keybinds")
