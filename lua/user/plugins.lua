@@ -69,6 +69,11 @@ return require('packer').startup({
       tag = '0.1.0',
       config = function()
         require('telescope').setup({
+          defaults = {
+            i = {
+              ["<C-h>"] = "which_key",
+            }
+          },
           extensions = {
             ['ui-select'] = require("telescope.themes").get_dropdown({}),
             emoji = {
@@ -160,6 +165,15 @@ return require('packer').startup({
     use {
         'ggandor/leap.nvim',
         config = function() require('leap').add_default_mappings() end
+    }
+
+    use {
+      'gorbit99/codewindow.nvim',
+      config = function()
+        local codewindow = require('codewindow')
+        codewindow.setup()
+        codewindow.apply_default_keybinds()
+      end,
     }
 
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap

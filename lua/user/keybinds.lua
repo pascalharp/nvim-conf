@@ -94,3 +94,18 @@ if ok_tt then
 else
   print("Could not find toggleterm when setting up keybinds")
 end
+
+-- Minimpa bindings
+local ok_mm, mm = pcall(require, "codewindow")
+if ok_mm then
+  map("n",
+      "<leader>m",
+      function()
+        mm.toggle_minimap()
+        mm.toggle_focus()
+      end,
+      opts)
+  map("n", "<leader>M", mm.toggle_focus, opts)
+else
+  print("Could not find codewindow when setting up keybinds")
+end

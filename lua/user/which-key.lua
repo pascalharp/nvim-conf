@@ -10,14 +10,16 @@ wk.setup({
 })
 
 wk.register({
+  b = { "Buffers" },
+  d = { "Go to Definition" },
+  D = { "Type Definition" },
   e = { "Emojis" },
   f = { "Find File" },
   g = { "Live Grep" },
-  b = { "Buffers" },
   h = { "Help Tags" },
   j = { "Jump List" },
-  d = { "Go to Definition" },
-  D = { "Type Definition" },
+  m = { "Toggle Minimap" },
+  M = { "Enter/Leave Minima" },
   r = { "Show References" },
   v = {
     name = "Versioning",
