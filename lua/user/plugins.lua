@@ -157,6 +157,11 @@ return require('packer').startup({
 
     use 'elkowar/yuck.vim'
 
+    use {
+        'ggandor/leap.nvim',
+        config = function() require('leap').add_default_mappings() end
+    }
+
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap
     if PACKER_BOOTSTRAP then
       require('packer').sync()
