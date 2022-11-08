@@ -74,6 +74,7 @@ if ok_tel then
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
   map("n", "<leader>vf", telescope.git_files, opts)
+  map("n", "<leader>j", telescope.jumplist, opts)
   map("n", "<leader>e", "<cmd>Telescope emoji<cr>", opts)
 else
   print("Could not find telescope when setting up keybinds")
