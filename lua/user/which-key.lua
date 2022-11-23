@@ -11,11 +11,14 @@ wk.setup({
 
 wk.register({
   b = { "Buffers" },
+  B = { "Builtin Pickers" },
   d = { "Go to Definition" },
   D = { "Type Definition" },
   e = { "Emojis" },
   f = { "Find File" },
+  F = { "Find File (+hidden +ignored)" },
   g = { "Live Grep" },
+  G = { "Live Grep (+hidden +ignored)" },
   h = { "Help Tags" },
   i = { "Indent Mode Picker" },
   j = { "Jump List" },
