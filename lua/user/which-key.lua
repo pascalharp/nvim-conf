@@ -29,6 +29,7 @@ wk.register({
     b = { "Git Branches" },
     s = { "Git Status" },
     S = { "Git Stash" },
+    g = { "Fugitive" },
   },
   l = {
     name = "LSP (when attached)",

@@ -31,6 +31,9 @@ return require('packer').startup({
     -- Treesitter
     use "nvim-treesitter/nvim-treesitter"
 
+    -- undotree
+    use "mbbill/undotree"
+
     -- Colorscheme
     use {
       "ellisonleao/gruvbox.nvim",
@@ -139,6 +142,9 @@ return require('packer').startup({
       'lewis6991/gitsigns.nvim',
       config = function() require("gitsigns").setup() end
     }
+
+    -- Git Tools
+    use "tpope/vim-fugitive"
 
     -- Terminal that keeps state
     use {

@@ -41,6 +41,9 @@ map("x", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 map('n', '[<space>', vim.diagnostic.goto_prev, opts)
 map('n', ']<space>', vim.diagnostic.goto_next, opts)
 
+-- Toggle unodtree
+map('n', '<leader>u', vim.cmd.UndotreeToggle, opts)
+
 -- Toggle indent mode
 local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
@@ -81,6 +84,9 @@ if ok_tel then
 else
   print("Could not find telescope when setting up keybinds")
 end
+
+-- Fugitive (in new tab)
+map("n", "<leader>vg", "<cmd>Git<cr><cmd>tabedit %<cr>", opts)
 
 -- ToggleTerm bindings
 local ok_tt, toggleterm = pcall(require, "toggleterm")
