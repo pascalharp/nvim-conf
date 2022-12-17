@@ -44,6 +44,12 @@ map('n', ']<space>', vim.diagnostic.goto_next, opts)
 -- Toggle unodtree
 map('n', '<leader>u', vim.cmd.UndotreeToggle, opts)
 
+-- Better copy and paste for global clipboard
+map('x', '<leader>y', "\"+y", opts)
+map('n', '<leader>y', "\"+y", opts)
+map('x', '<leader>p', "\"+p", opts)
+map('n', '<leader>p', "\"+p", opts)
+
 -- Toggle indent mode
 local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
@@ -69,8 +75,15 @@ map("n", "T", "<cmd>TagbarToggle<cr>", opts)
 local ok_tel, telescope = pcall(require, "telescope.builtin")
 if ok_tel then
   map("n", "<leader>f", telescope.find_files, opts)
+  map("n", "<leader>F", function()
+      telescope.find_files({hidden = true, no_ignore = true, no_ignore_parent = true})
+  end, opts)
   map("n", "<leader>g", telescope.live_grep, opts)
+  map("n", "<leader>G", function()
+      telescope.live_grep({additional_args = function() return {'-uu'} end})
+  end, opts)
   map("n", "<leader>b", telescope.buffers, opts)
+  map("n", "<leader>B", telescope.builtin, opts)
   map("n", "<leader>h", telescope.help_tags, opts)
   map("n", "<leader>d", telescope.lsp_definitions, opts)
   map("n", "<leader>r", telescope.lsp_references, opts)
