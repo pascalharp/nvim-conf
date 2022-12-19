@@ -69,7 +69,7 @@ else
 end
 
 -- Toggle Tagbar
-map("n", "T", "<cmd>TagbarToggle<cr>", opts)
+map("n", "T", vim.cmd.TagbarToggle, opts)
 
 -- Telescope bindings
 local ok_tel, telescope = pcall(require, "telescope.builtin")
