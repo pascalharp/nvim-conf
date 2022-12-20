@@ -85,8 +85,6 @@ if ok_tel then
   map("n", "<leader>b", telescope.buffers, opts)
   map("n", "<leader>B", telescope.builtin, opts)
   map("n", "<leader>h", telescope.help_tags, opts)
-  map("n", "<leader>d", telescope.lsp_definitions, opts)
-  map("n", "<leader>r", telescope.lsp_references, opts)
   map("n", "<leader>j", telescope.jumplist, opts)
   map("n", "<leader>vf", telescope.git_files, opts)
   map("n", "<leader>vc", telescope.git_commits, opts)
