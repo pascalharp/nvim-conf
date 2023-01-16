@@ -34,6 +34,7 @@ wk.register({
     S = { "Git Stash" },
     g = { "Fugitive" },
   },
+  V = { "Venn mode" },
   l = {
     name = "LSP (when attached)",
     D = "Declaration",

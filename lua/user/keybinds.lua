@@ -50,12 +50,14 @@ map('n', '<leader>y', "\"+y", opts)
 map('x', '<leader>p', "\"+p", opts)
 map('n', '<leader>p', "\"+p", opts)
 
--- Toggle indent mode
+-- Map utils to keys
 local ok_uti, utils = pcall(require, "user.utils")
 if ok_uti then
     map("n", "<A-t>", utils.next_indent_mode, opts)
     map("n", "<A-s>", utils.toggle_spell_check, opts)
     map("n", "<leader>i", utils.pick_indent_mode, opts)
+
+    map('n', '<leader>V', utils.toggle_venn, opts)
 else
     print("Could not find utils")
 end

@@ -185,6 +185,10 @@ return require('packer').startup({
       end,
     }
 
+    use {
+      'jbyuki/venn.nvim'
+    }
+
     -- Automatically set up configuration after cloning packer.nvim only on bootstrap
     if PACKER_BOOTSTRAP then
       require('packer').sync()
