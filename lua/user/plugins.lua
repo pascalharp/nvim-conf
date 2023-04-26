@@ -53,7 +53,7 @@ return require('packer').startup({
     use {
       'kyazdani42/nvim-tree.lua',
       config = function()
-        require('nvim-tree').setup({ remove_keymaps = {'F'} })
+        require('user.nvim-tree')
       end
     }
 
@@ -118,6 +118,7 @@ return require('packer').startup({
             {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
+            {'onsails/lspkind.nvim'},
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},
@@ -163,11 +164,6 @@ return require('packer').startup({
           }
         })
       end
-    }
-
-    use {
-      'glepnir/dashboard-nvim',
-      config = function() require("user.dashboard") end
     }
 
     use 'elkowar/yuck.vim'

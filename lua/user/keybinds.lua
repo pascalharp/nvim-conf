@@ -8,6 +8,10 @@ map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Enter in normal mode for new lines
+map("n", "<CR>", "@=\'o<C-V><Esc>k\'<CR>", opts)
+map("n", "<S-CR>", "@=\'O<C-V><Esc>j\'<CR>", opts)
+
 -- Better window navigation
 map("n", "<C-c>", "<cmd>bd<cr>", opts)
 map("n", "<C-h>", "<C-w>h", opts)
@@ -63,9 +67,9 @@ else
 end
 
 -- Toggle explorer
-local ok_nt, nvim_tree = pcall(require, "nvim-tree")
+local ok_nt, nvt = pcall(require, "nvim-tree.api")
 if ok_nt then
-  map("n", "F", function() nvim_tree.toggle(false, true) end, opts)
+  map("n", "F", nvt.tree.toggle, opts)
 else
   print("Could not find nvim_tree when setting up keybinds")
 end
