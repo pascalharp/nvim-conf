@@ -25,6 +25,9 @@ wk.register({
   m = { "Toggle Minimap" },
   M = { "Enter/Leave Minima" },
   r = { "Show References" },
+  t = { "Open/Close floating terminal" },
+  T = { "Open/Close bottom terminal" },
+  u = { "Open Undo Tree" },
   v = {
     name = "Versioning",
     c = { "Git Commits" },
